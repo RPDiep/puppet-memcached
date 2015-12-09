@@ -1,6 +1,7 @@
 class memcached (
   $enabled  = true,
   $port     = 11211,
+  $udp_port = 0, #Disabled by default
   $listen   = '127.0.0.1',
   $size     = '64',
   $conn     = 1024,

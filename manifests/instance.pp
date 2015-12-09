@@ -1,10 +1,11 @@
 define memcached::instance (
-  $port   = undef,
-  $ensure = 'file',
-  $user   = $memcached::user,
-  $listen = $memcached::listen,
-  $size   = $memcached::size,
-  $conn   = $memcached::conn,
+  $port     = undef,
+  $udp_port = 0,
+  $ensure   = 'file',
+  $user     = $memcached::user,
+  $listen   =  $memcached::listen,
+  $size     = $memcached::size,
+  $conn     = $memcached::conn,
 ) {
 
   include memcached
@@ -14,6 +15,7 @@ define memcached::instance (
   }
 
   validate_re($port,'^112[0-9]{2}$')
+  validate_re($udp_port,'^112[0-9]{2}$')
   validate_re($ensure,'^present|file|absent$')
 
   # Newer versions of puppet use newer facts; use what we have
